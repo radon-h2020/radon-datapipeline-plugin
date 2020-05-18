@@ -17,6 +17,16 @@ We can realized this plugin in the path of RADON-GMT to RADON Orchestrator. Henc
 
 This is the initial version of the Data pipeline plugin. In the proceeding version, the plugin will be improved and will come with lots of features. 
 
+## How to use?
+- Get the plugin
+- Make sure that Python environment is working on your machine.
+- Keep you service ready and note the path. 
+- In this version of the Plugin, YAML file is expected as input.
+- Execute the following command
+```
+python DPP_V1 <path to the yaml file>  
+```
+- and here is the output in the current directory.
 
 .. more info to come soon, stay tuned!!!
 
