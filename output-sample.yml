@@ -1,0 +1,302 @@
+description: This is a demo short service blueprint.
+node_types:
+  radon.nodes.VM.OpenStack:
+    attributes:
+      id:
+        description: OpenStack id of the VM
+        type: string
+    derived_from: tosca.nodes.Compute
+    interfaces:
+      Standard:
+        operations:
+          create:
+            implementation: nodetypes/vm/create.yml
+            inputs:
+              vm_name:
+                default:
+                  get_property:
+                  - SELF
+                  - name
+          delete:
+            implementation: nodetypes/vm/delete.yml
+            inputs:
+              id:
+                default:
+                  get_attribute:
+                  - SELF
+                  - id
+        type: tosca.interfaces.node.lifecycle.Standard
+    properties:
+      flavor:
+        description: OpenStack flavor id (flavor names are not accepted)
+        type: string
+      image:
+        type: string
+      key_name:
+        description: OpenStack SSH key name that should be placed on the VM
+        type: string
+      name:
+        type: string
+      network:
+        description: OpenStack network id (network names are not accepted)
+        type: string
+  radon.nodes.abstract.DataPipeline:
+    derived_from: tosca.nodes.Root
+  radon.nodes.nifi.Nifi:
+    capabilities:
+      host:
+        type: tosca.capabilities.Container
+    derived_from: tosca.nodes.SoftwareComponent
+    interfaces:
+      Standard:
+        operations:
+          configure:
+            implementation: nodetypes/radon/nodes/nifi/nifiplatform/files/configure.yml
+            inputs:
+              tarball_version:
+                default:
+                  get_property:
+                  - SELF
+                  - component_version
+          create:
+            implementation: nodetypes/radon/nodes/nifi/nifiplatform/files/create.yml
+            inputs:
+              tarball_version:
+                default:
+                  get_property:
+                  - SELF
+                  - component_version
+          delete:
+            implementation: nodetypes/radon/nodes/nifi/nifiplatform/files/delete.yml
+            inputs:
+              tarball_version:
+                default:
+                  get_property:
+                  - SELF
+                  - component_version
+          start:
+            implementation: nodetypes/radon/nodes/nifi/nifiplatform/files/start.yml
+          stop:
+            implementation: nodetypes/radon/nodes/nifi/nifiplatform/files/stop.yml
+        type: tosca.interfaces.node.lifecycle.Standard
+    properties:
+      component_version:
+        description: The version of Apache Nifi
+        required: true
+        type: string
+      port:
+        default: 8080
+        description: The port exposed by Apache Nifi
+        required: true
+        type: string
+  radon.nodes.nifi.nifipipeline:
+    attributes:
+      id:
+        description: Unique ID of the pipeline
+        type: string
+      pipeline_type:
+        description: type of the pipeline. e.g. processor, process-groups, inputPorts,
+          RPG etc
+        type: string
+    capabilities:
+      connectToPipeline:
+        description: Capability to receive data from other pipeline nodes
+        occurrences:
+        - 0
+        - UNBOUNDED
+        type: tosca.capabilities.Endpoint
+        valid_source_types:
+        - radon.nodes.nifi.nifipipeline
+    derived_from: radon.nodes.abstract.DataPipeline
+    interfaces:
+      Standard:
+        operations:
+          configure:
+            implementation: nodetypes/radon/nodes/nifi/nifipipeline/files/configure.yml
+            inputs:
+              cred_file_path:
+                default:
+                  get_property:
+                  - SELF
+                  - cred_file_path
+              object_name:
+                default:
+                  get_property:
+                  - SELF
+                  - object_name
+          create:
+            implementation: nodetypes/radon/nodes/nifi/nifipipeline/files/create.yml
+            inputs:
+              template_file:
+                default:
+                  get_property:
+                  - SELF
+                  - template_file
+              template_name:
+                default:
+                  get_property:
+                  - SELF
+                  - template_name
+          delete:
+            implementation: nodetypes/radon/nodes/nifi/nifipipeline/files/delete.yml
+            inputs:
+              pipeline_id:
+                default:
+                  get_attribute:
+                  - SELF
+                  - id
+              pipeline_type:
+                default:
+                  get_attribute:
+                  - SELF
+                  - pipeline_type
+          start:
+            implementation: nodetypes/radon/nodes/nifi/nifipipeline/files/start.yml
+            inputs:
+              pipeline_id:
+                default:
+                  get_attribute:
+                  - SELF
+                  - id
+              pipeline_type:
+                default:
+                  get_attribute:
+                  - SELF
+                  - pipeline_type
+          stop:
+            implementation: nodetypes/radon/nodes/nifi/nifipipeline/files/stop.yml
+            inputs:
+              pipeline_id:
+                default:
+                  get_attribute:
+                  - SELF
+                  - id
+              pipeline_type:
+                default:
+                  get_attribute:
+                  - SELF
+                  - pipeline_type
+        type: tosca.interfaces.node.lifecycle.Standard
+    properties:
+      cred_file_path:
+        description: credential file for access and secret key
+        type: string
+      object_name:
+        description: object name in the process group
+        type: string
+      template_file:
+        description: XML implementation of the pipeline
+        type: string
+      template_name:
+        description: name of the pipeline
+        type: string
+    requirements:
+    - host:
+        capability: tosca.capabilities.Container
+        node: radon.nodes.nifi.Nifi
+        relationship: tosca.relationships.HostedOn
+    - connectToPipeline:
+        capability: tosca.capabilities.Endpoint
+        node: radon.nodes.nifi.nifipipeline
+        occurrences:
+        - 0
+        - 1
+        relationship: radon.relationships.datapipelines.ConnectNiFi
+relationship_types:
+  radon.relationships.datapipelines.ConnectNiFi:
+    derived_from: tosca.relationships.ConnectsTo
+    description: Connecting two nifi data pipelines for forwarding data. The pipelines
+      should be on same server.
+    interfaces:
+      Configure:
+        operations:
+          post_configure_source:
+            implementation:
+              primary: dpp/connectPipelines.yml
+            inputs:
+              source_pipeline_id:
+                default:
+                  get_attribute:
+                  - SOURCE
+                  - id
+              source_pipeline_server_ip:
+                default:
+                  get_attribute:
+                  - SOURCE
+                  - host
+                  - host
+                  - public_address
+              target_pipeline_id:
+                default:
+                  get_attribute:
+                  - TARGET
+                  - id
+              target_pipeline_server_ip:
+                default:
+                  get_attribute:
+                  - TARGET
+                  - host
+                  - host
+                  - public_address
+topology_template:
+  node_templates:
+    nifi_vmone:
+      properties:
+        component_version: 1.11.1
+      requirements:
+      - host: vmone
+      type: radon.nodes.nifi.Nifi
+    nifi_vmtwo:
+      properties:
+        component_version: 1.11.1
+      requirements:
+      - host: vmtwo
+      type: radon.nodes.nifi.Nifi
+    pipeline1_getS3Img:
+      properties:
+        cred_file_path: /home/opera_0.5.2/DP_demo/V1/files/credentials
+        object_name: ListS3
+        template_file: /home/opera_0.5.2/DP_demo/V1/files/readFrmS3_PG.xml
+        template_name: readFrmS3_PG
+      requirements:
+      - host: nifi_vmone
+      - connectToRemotePipeline: pipeline2_invokeLmabda
+      type: radon.nodes.nifi.nifipipeline
+    pipeline2_invokeLmabda:
+      properties:
+        cred_file_path: /home/opera_0.5.2/DP_demo/V1/files/credentials
+        object_name: invokeLambda
+        template_file: /home/opera_0.5.2/DP_demo/V1/files/invokeLambda_PG.xml
+        template_name: invokeLambda_PG
+      requirements:
+      - host: nifi_vmtwo
+      - connectToPipeline: pipeline3_pushImg
+      type: radon.nodes.nifi.nifipipeline
+    pipeline3_pushImg:
+      properties:
+        cred_file_path: /home/opera_0.5.2/DP_demo/V1/files/credentials
+        object_name: PutS3Object
+        template_file: /home/opera_0.5.2/DP_demo/V1/files/pushToS3_PG.xml
+        template_name: pushToS3_PG
+      requirements:
+      - host: nifi_vmtwo
+      type: radon.nodes.nifi.nifipipeline
+    vmone:
+      properties:
+        flavor: m2.tiny
+        image: 13a94b11-98ee-43a4-ad29-00ae97e8f790
+        key_name: macbook-chinmaya
+        name: vmone_centos1
+        network: provider_64_net
+      type: radon.nodes.VM.OpenStack
+    vmtwo:
+      properties:
+        flavor: m2.tiny
+        image: 13a94b11-98ee-43a4-ad29-00ae97e8f790
+        key_name: macbook-chinmaya
+        name: vmtwo_centos2
+        network: provider_64_net
+      requirements:
+      - dependency: vmone
+      type: radon.nodes.VM.OpenStack
+tosca_definitions_version: tosca_simple_yaml_1_3
