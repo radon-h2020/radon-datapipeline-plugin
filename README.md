@@ -21,5 +21,5 @@ This is the initial version of the Data pipeline plugin. In the proceeding versi
 .. more info to come soon, stay tuned!!!
 
 
-#Acknowledgement
+# Acknowledgement
 This project has received funding from the European Union’s Horizon 2020 research and innovation programme under Grant Agreement No. 825040 (RADON).
