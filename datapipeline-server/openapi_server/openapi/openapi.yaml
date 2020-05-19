@@ -1,0 +1,57 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: jakovits@ut.ee
+  description: This is the initial API for data pipeline plugin
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: RADON data pipeline plugin
+  version: 1.0.0
+servers:
+- url: https://raw.githubusercontent.com/RadonDataPipeline
+tags:
+- description: Check the validity of data pipeline and convert it into a working version
+    if needed
+  name: convert
+paths:
+  /convert:
+    post:
+      operationId: submit_datapipeline
+      requestBody:
+        $ref: '#/components/requestBodies/DataPipeline'
+      responses:
+        "405":
+          description: Invalid input
+        "201":
+          content:
+            application/octet-stream:
+              schema:
+                format: binary
+                type: string
+          description: Successful operation
+        "200":
+          content:
+            application/octet-stream:
+              schema:
+                format: binary
+                type: string
+          description: Successful operation
+      summary: Submit a data pipeline for validation and converting
+      tags:
+      - convert
+      x-openapi-router-controller: openapi_server.controllers.convert_controller
+components:
+  requestBodies:
+    DataPipeline:
+      content:
+        multipart/form-data:
+          schema:
+            $ref: '#/components/schemas/DataPipeline'
+  schemas:
+    DataPipeline:
+      properties:
+        file:
+          format: binary
+          type: string
+      type: object
