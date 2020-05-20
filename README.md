@@ -34,8 +34,10 @@ Web service version of the plugin is available in the datapipeline-server folder
 
 Download the github project repository
 
-User Docker to deploy the data pipeline plugin webservice:
+User Docker  to build and deploy the data pipeline plugin webservice:
 ```bash
+cd  datapipeline-server
+
 # building the image
 docker build -t radon_dpp_server .
 
