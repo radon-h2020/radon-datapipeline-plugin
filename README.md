@@ -8,7 +8,7 @@ We can realized this plugin in the path of RADON-GMT to RADON Orchestrator. Henc
 
 ## What is inside?
 - This plugin unzip the CSAR file, get the YAML file (the service blueprint).
-- Parse the the YAML file and understande the node topolology.
+- Parse the the YAML file and understand the node topolology.
 - Make any changes/modification to the YAML file itself, if needed.
 - Updates the templates, if needed.
 - Zip again all and create the CSAR file.
@@ -26,7 +26,7 @@ This is the initial version of the Data pipeline plugin. In the proceeding versi
 ```
 python DPP_V1 <path to the yaml file>  
 ```
-- and here is the output in the current directory.
+- Output will be placed in the current directory.
 
 ## How to use the plugin API?
 
