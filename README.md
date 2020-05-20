@@ -17,10 +17,10 @@ We can realized this plugin in the path of RADON-GMT to RADON Orchestrator. Henc
 
 This is the initial version of the Data pipeline plugin. In the proceeding version, the plugin will be improved and will come with lots of features. 
 
-## How to use?
-- Get the plugin
+## How to use the plugin as a stand alone tool?
+- Download the plugin
 - Make sure that Python environment is working on your machine.
-- Keep you service ready and note the path. 
+- Keep your  TOSCA service ready and note the path. 
 - In this version of the Plugin, YAML file is expected as input.
 - Execute the following command
 ```
@@ -28,8 +28,26 @@ python DPP_V1 <path to the yaml file>
 ```
 - and here is the output in the current directory.
 
-.. more info to come soon, stay tuned!!!
+## How to use the plugin API?
+
+Web service version of the plugin is available in the datapipeline-server folder
+
+Download the github project repository
+
+User Docker to deploy the data pipeline plugin webservice:
+```bash
+# building the image
+docker build -t radon_dpp_server .
+
+# starting up a container
+docker run -p 8080:8080 adon_dpp_server
+```
+
+Open your browser to here:
+```
+http://localhost:8080/RadonDataPipeline/ui/
+```
 
 
-# Acknowledgement
+## Acknowledgement
 This project has received funding from the European Union’s Horizon 2020 research and innovation programme under Grant Agreement No. 825040 (RADON).
