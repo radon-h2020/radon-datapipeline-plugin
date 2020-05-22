@@ -29,7 +29,9 @@ What is inside?
 
 This is the initial version of the Data pipeline plugin. In the proceeding version, the plugin will be improved and will come with lots of features. 
 
-## How to use the plugin as a stand alone tool?
+How to use the plugin as a stand alone tool?
+############################################
+
 1. Download the plugin
 2. Make sure that Python environment is working on your machine.
 3. Keep your  TOSCA service ready and note the path. 
