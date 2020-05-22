@@ -53,5 +53,9 @@ Direct your browser to here to access the RadonDataPipeline API ui with REST req
 http://localhost:8080/RadonDataPipeline/ui/
 ```
 
+## Documentation
+
+Online documentation is available at https://datapipeline-plugin.readthedocs.io/
+
 ## Acknowledgement
 This project has received funding from the European Union’s Horizon 2020 research and innovation programme under Grant Agreement No. 825040 (RADON).
