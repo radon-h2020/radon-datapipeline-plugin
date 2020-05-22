@@ -49,6 +49,7 @@ How to use the plugin API?
 2. Download the github project repository
 
 3. User Docker  to build and deploy the data pipeline plugin webservice:
+
 .. code-block:: bash
    :linenos:
   cd  datapipeline-server
@@ -60,19 +61,7 @@ How to use the plugin API?
   docker run -p 8080:8080 adon_dpp_server
 
 
-```bash
-cd  datapipeline-server
-
-# building the image
-docker build -t radon_dpp_server .
-
-# starting up a container
-docker run -p 8080:8080 adon_dpp_server
-```
 
 4. Open your browser to here:
 `http://localhost:8080/RadonDataPipeline/ui/`_
 
-
-```
-http://localhost:8080/RadonDataPipeline/ui/
