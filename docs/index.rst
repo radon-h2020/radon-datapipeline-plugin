@@ -34,7 +34,7 @@ Additional Information
 Contact
 -------
 
-- `Chinmaya Dehury <http://kodu.ut.ee/~dehury/>`_ and `Pelle Jakovits `_, Institute of Computer Science, University of Tartu, Estonia
+- `Chinmaya Dehury <http://kodu.ut.ee/~dehury/>`_ and Pelle Jakovits, Institute of Computer Science, University of Tartu, Estonia
 
 Acknowledgments
 ---------------
