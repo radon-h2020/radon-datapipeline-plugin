@@ -62,6 +62,5 @@ How to use the plugin API?
 
 
 
-4. Open your browser to here:
-`http://localhost:8080/RadonDataPipeline/ui/`_
+4. Open your browser to here: http://localhost:8080/RadonDataPipeline/ui/
 
