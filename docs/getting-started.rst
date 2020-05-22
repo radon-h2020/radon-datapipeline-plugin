@@ -17,7 +17,7 @@ Where is this plugin in RADON-Architecture?
 We can realized this plugin in the path of RADON-GMT to RADON Orchestrator. This is shown in the following figure.  The input to this plugin is the user-created TOSCA service blueprint (i.e. CSAR file) from RADON-GMT and the output the updated CSAR file to the RADON Orchestrator. This plugin also interacts with the RADON template library to update the CSAR with the correct templates that fits into the targeted multi cloud evironment.
 
 What is inside?
-*******************************************
+***************
 
 1. This plugin unzip the CSAR file, get the YAML file (the service blueprint).
 2. Parse the the YAML file and understand the node topolology.
@@ -37,10 +37,10 @@ How to use the plugin as a stand alone tool?
 3. Keep your  TOSCA service ready and note the path. 
 4. In this version of the Plugin, YAML file is expected as input.
 5. Execute the following command
-::
 
+```
   python DPP <path to the yaml file>
-
+```
 6. Output will be placed in the current directory.
 
 
