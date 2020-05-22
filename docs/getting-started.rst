@@ -17,7 +17,7 @@ Where is this plugin in RADON-Architecture?
 We can realized this plugin in the path of RADON-GMT to RADON Orchestrator. This is shown in the following figure.  The input to this plugin is the user-created TOSCA service blueprint (i.e. CSAR file) from RADON-GMT and the output the updated CSAR file to the RADON Orchestrator. This plugin also interacts with the RADON template library to update the CSAR with the correct templates that fits into the targeted multi cloud evironment.
 
 What is inside?
-===========================================
+*******************************************
 
 1. This plugin unzip the CSAR file, get the YAML file (the service blueprint).
 2. Parse the the YAML file and understand the node topolology.
@@ -30,7 +30,7 @@ What is inside?
 This is the initial version of the Data pipeline plugin. In the proceeding version, the plugin will be improved and will come with lots of features. 
 
 How to use the plugin as a stand alone tool?
-############################################
+*********************************************
 
 1. Download the plugin
 2. Make sure that Python environment is working on your machine.
@@ -44,13 +44,14 @@ How to use the plugin as a stand alone tool?
 6. Output will be placed in the current directory.
 
 
-## How to use the plugin API?
+How to use the plugin API?
+*******************************************
 
-Web service version of the plugin is available in the datapipeline-server folder
+1. Web service version of the plugin is available in the datapipeline-server folder
 
-Download the github project repository
+2. Download the github project repository
 
-User Docker  to build and deploy the data pipeline plugin webservice:
+3. User Docker  to build and deploy the data pipeline plugin webservice:
 ```bash
 cd  datapipeline-server
 
@@ -61,6 +62,6 @@ docker build -t radon_dpp_server .
 docker run -p 8080:8080 adon_dpp_server
 ```
 
-Open your browser to here:
+4. Open your browser to here:
 ```
 http://localhost:8080/RadonDataPipeline/ui/
