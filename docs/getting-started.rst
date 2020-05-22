@@ -71,5 +71,8 @@ docker run -p 8080:8080 adon_dpp_server
 ```
 
 4. Open your browser to here:
+`http://localhost:8080/RadonDataPipeline/ui/`_
+
+
 ```
 http://localhost:8080/RadonDataPipeline/ui/
