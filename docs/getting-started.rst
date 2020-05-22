@@ -16,6 +16,9 @@ Where is this plugin in RADON-Architecture?
 
 We can realized this plugin in the path of RADON-GMT to RADON Orchestrator. This is shown in the following figure.  The input to this plugin is the user-created TOSCA service blueprint (i.e. CSAR file) from RADON-GMT and the output the updated CSAR file to the RADON Orchestrator. This plugin also interacts with the RADON template library to update the CSAR with the correct templates that fits into the targeted multi cloud evironment.
 
+.. image:: images/datapipelinePlugin.png
+
+
 What is inside?
 ***************
 
