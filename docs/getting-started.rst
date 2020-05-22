@@ -47,6 +47,12 @@ How to use the plugin CLI?
 
 6. Output will be placed in the current directory.
 
+:: TODO
+  < upload a sample inout file >
+  < Give the link to sample input file  >
+  < upload a sample outout file >
+  < Give  the link to sample output file >
+
 
 How to use the plugin API?
 *******************************************
