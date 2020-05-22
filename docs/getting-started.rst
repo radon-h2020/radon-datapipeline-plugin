@@ -49,9 +49,8 @@ How to use the plugin API?
 2. Download the github project repository
 
 3. User Docker  to build and deploy the data pipeline plugin webservice:
-
-.. code-block:: bash
-   :linenos:
+:: bash
+:linenos:
   cd  datapipeline-server
   
   # building the image
