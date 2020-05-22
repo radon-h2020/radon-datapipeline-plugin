@@ -39,6 +39,7 @@ How to use the plugin as a stand alone tool?
 5. Execute the following command
 
 ::
+
   python DPP <path to the yaml file>
 
 6. Output will be placed in the current directory.
@@ -51,7 +52,7 @@ How to use the plugin API?
 
 2. Download the github project repository
 
-3. User Docker  to build and deploy the data pipeline plugin webservice:
+3. User Docker  to build and deploy the data pipeline plugin webservice
 
 :: 
 
