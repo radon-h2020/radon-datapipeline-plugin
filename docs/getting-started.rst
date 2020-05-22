@@ -1,4 +1,4 @@
-RADON DATAPIPELINE METHODOLOGY
+RADON Datapipeline Methodology
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: images/PipelineBlock-v1.png
