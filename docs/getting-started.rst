@@ -36,11 +36,8 @@ How to use the plugin as a stand alone tool?
 2. Make sure that Python environment is working on your machine.
 3. Keep your  TOSCA service ready and note the path. 
 4. In this version of the Plugin, YAML file is expected as input.
-5. Execute the following command
-
-```
+5. Execute the following command::
   python DPP <path to the yaml file>
-```
 6. Output will be placed in the current directory.
 
 
@@ -52,6 +49,17 @@ How to use the plugin API?
 2. Download the github project repository
 
 3. User Docker  to build and deploy the data pipeline plugin webservice:
+.. code-block:: bash
+   :linenos:
+  cd  datapipeline-server
+  
+  # building the image
+  docker build -t radon_dpp_server .
+  
+  # starting up a container
+  docker run -p 8080:8080 adon_dpp_server
+
+
 ```bash
 cd  datapipeline-server
 
