@@ -32,7 +32,7 @@ What is inside?
 
 This is the initial version of the Data pipeline plugin. In the proceeding version, the plugin will be improved and will come with lots of features. 
 
-How to use the plugin as a stand alone tool?
+How to use the plugin CLI?
 *********************************************
 
 1. Download the plugin
