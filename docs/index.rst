@@ -10,11 +10,33 @@ Welcome to DataPipeline plugin's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+Business Purpose
+----------------
+
+.. include:: business-purpose.rst
+
+Technical Details
+-----------------
+
+.. include:: technical-details.rst
+
+Getting Started
+---------------
+
+.. include:: getting-started.rst
 
 
-Indices and tables
-==================
+Additional Information
+----------------------
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. include:: additional-information.rst
+
+Contact
+-------
+
+- `Chinmaya Dehury <http://kodu.ut.ee/~dehury/>`_ and `Pelle Jakovits `_, Institute of Computer Science, University of Tartu, Estonia
+
+Acknowledgments
+---------------
+
+This work is being supported by the European Union’s Horizon 2020 research and innovation programme (grant no. 825040, RADON).
