@@ -38,7 +38,7 @@ How to use the plugin as a stand alone tool?
 4. In this version of the Plugin, YAML file is expected as input.
 5. Execute the following command
 
-::
+:: 
 
   python DPP <path to the yaml file>
 
