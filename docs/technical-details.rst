@@ -4,7 +4,7 @@ RADON Datapipeline Methodology
 Following figures shows the basic concept of data pipeline. RADON data pipeline provides an environment to build serverless data intensive applications and handle the movement of data between different clouds in an efficient manner. In the process of data movement, RADON Data pipeline allows the users to apply analyticcal operations onto the data taking the help of serverless platform. Such applications can be designed using TOSCA language.
 We see *PipelineBlock* as a basic building block of a TOSCA based data
 
-.. image:: images/BasicDPConcept
+.. image:: images/BasicDPConcept.png
 
 To carryour different tasks, we...
 
