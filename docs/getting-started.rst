@@ -37,11 +37,7 @@ How to use the plugin CLI?
 
 6. Output will be placed in the current directory.
 
-:: TODO
-  < upload a sample inout file >
-  < Give the link to sample input file  >
-  < upload a sample outout file >
-  < Give  the link to sample output file >
+7. A sample `input <https://github.com/radon-h2020/radon-datapipeline-plugin/blob/master/original-sample.yml>`_  and `output <https://github.com/radon-h2020/radon-datapipeline-plugin/blob/master/output-sample.yml>`_ YAML file can be found `here <https://github.com/radon-h2020/radon-datapipeline-plugin>`_.
 
 
 How to use the plugin API?
