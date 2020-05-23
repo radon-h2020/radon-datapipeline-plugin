@@ -4,6 +4,17 @@ Generating Pipeline CSAR
 The TOSCA based data pipeline service tempalte can be generated usng the RADON Graphical Modelling tool, Winery. 
 You can follow this step to setup RADON GMT. 
 
+* Open Winery and click on *Service Templates* manu.
+* Create a new srvice tempalte by clicking on *Add New* button. 
+* Provide suitable name and click on *Add* button.
+* Here you can see the list of service templates. Select newly created service template.
+* Now select the *Topology Template* menu item followed by *Open Editor* button.
+* In the *Winery: topology modeler* window, find the suitable data pipeline TOSCA nodes.
+* Drag the required TOSCA nodes and set the properties and make the connection with other pipeline nodes.
+* Export the CSAR file, by clicking on *Other* -> *Export CSAR*.
+
+The exported CSAR will be the output of RADON GMT, which will furher be sent to data pipeline plugin.
+
 
 radon-datapipeline-plugin
 ~~~~~~~~~~~~~~~~~~~~~~~~~
