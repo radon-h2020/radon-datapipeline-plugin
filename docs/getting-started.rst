@@ -13,7 +13,7 @@ You can follow this step to setup RADON GMT.
 * Drag the required TOSCA nodes and set the properties and make the connection with other pipeline nodes.
 * An example for such is given can be seen in following figure:
 .. image:: images/GMToutput.jpg
-The figure contain three pipelines: ConsS3Bucket, AWSLmabda, and PubsS3Bucket. These three pipelines are hosted atop Nifi environment within OpenStack prvate cloud environment. 
+The figure contain three pipelines: ConsS3Bucket, AWSLmabda, and PubsS3Bucket. These three pipelines are hosted atop Nifi environment within OpenStack private cloud environment. 
 
 * Export the CSAR file, by clicking on *Other* -> *Export CSAR*.
 you may refer to `Winery  <https://eclipse-winery.readthedocs.io/en/latest/>`_ for further instruction on how to export the CSAR. 
