@@ -11,9 +11,13 @@ You can follow this step to setup RADON GMT.
 * Now select the *Topology Template* menu item followed by *Open Editor* button.
 * In the *Winery: topology modeler* window, find the suitable data pipeline TOSCA nodes.
 * Drag the required TOSCA nodes and set the properties and make the connection with other pipeline nodes.
+* An example for such is given can be seen in following figure:
+.. image:: images/GMToutput.jpg
+The figure contain three pipelines: ConsS3Bucket, AWSLmabda, and PubsS3Bucket. These three pipelines are hosted atop Nifi environment within OpenStack prvate cloud environment. 
 * Export the CSAR file, by clicking on *Other* -> *Export CSAR*.
+you may refer to `Winery  <https://eclipse-winery.readthedocs.io/en/latest/>`_ for further instruction on how to export the CSAR. 
 
-The exported CSAR will be the output of RADON GMT, which will furher be sent to data pipeline plugin.
+The exported CSAR will furher be sent to data pipeline plugin.
 
 
 Verifying and updating with data pipeline Plugin
