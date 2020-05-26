@@ -16,7 +16,7 @@ You can follow this step to setup RADON GMT.
 The figure contain three pipelines: ConsS3Bucket, AWSLmabda, and PubsS3Bucket. These three pipelines are hosted atop Nifi environment within OpenStack private cloud environment. 
 
 * Export the CSAR file, by clicking on *Other* -> *Export CSAR*.
-you may refer to `Winery  <https://eclipse-winery.readthedocs.io/en/latest/>`_ for further instruction on how to export the CSAR. 
+you may refer to `Winery User Guide  <https://eclipse-winery.readthedocs.io/en/latest/>`_ for further instruction on how to export the CSAR. 
 
 The exported CSAR will furher be sent to data pipeline plugin.
 
