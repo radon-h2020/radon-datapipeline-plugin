@@ -1,0 +1,13 @@
+install the opera in virtual environment
+
+$ mkdir ~/opera && cd ~/opera
+$ python3 -m venv .venv && . .venv/bin/activate
+(.venv) $ pip install opera
+
+install ruamel.yaml
+
+(.venv) $ pip install ruamel.yaml
+
+Run the below parser to parse the ".csar" file and edit the node requirements
+
+(.venv) $ python3 YamlCustomParser.py <.csar file>

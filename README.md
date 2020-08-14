@@ -18,14 +18,27 @@ This is the initial version of the Data pipeline plugin. In the proceeding versi
 
 ## How to use the plugin as a stand alone tool?
 - Download the plugin github repository using git or as a zip file. 
-- Make sure that Python environment is working on your machine.
+- Make sure that Python3 environment is working on your machine.
 - Keep your TOSCA service ready and note the path. 
-- In this version of the Plugin, YAML file is expected as input.
-- Execute the following command
+- Keep the CSAR file ready for input. 
+- Install the opera in virtual environment
 ```
-python DPP_V1 <path to the yaml file>  
+$ mkdir ~/opera && cd ~/opera
+$ python3 -m venv .venv && . .venv/bin/activate
+(.venv) $ pip install opera
 ```
-- Output will be placed in the current directory.
+[click here](https://pypi.org/project/opera/0.5.8/) for detailed installation procedure of Opera.
+It is recommended to install opera v0.5.8.
+
+- install ruamel.yaml
+```
+(.venv) $ pip install ruamel.yaml
+```
+- Change current directory to `/src`.
+- Execute the following command with the CSAR file 
+```
+(.venv) $ python3 DPP.py <.csar file>
+```
 
 ## How to use the plugin API?
 
