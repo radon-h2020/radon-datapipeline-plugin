@@ -47,3 +47,7 @@ docker build -t openapi_server .
 # starting up a container
 docker run -p 8080:8080 openapi_server
 ```
+
+** After installing and configuration, the usage demo can be seen below. **
+
+
