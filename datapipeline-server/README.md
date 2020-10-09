@@ -49,5 +49,5 @@ docker run -p 8080:8080 openapi_server
 ```
 
 ** After installing and configuration, the usage demo can be seen below. **
-[![Watch the video](https://github.com/radon-h2020/radon-datapipeline-plugin/blob/master/datapipeline-server/videoDemo/DP_plugin_API.mp4)]
+[![Watch the video]](https://github.com/radon-h2020/radon-datapipeline-plugin/blob/master/datapipeline-server/videoDemo/DP_plugin_API.mp4)
 
