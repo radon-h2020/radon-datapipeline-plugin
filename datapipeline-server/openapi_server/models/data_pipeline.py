@@ -8,10 +8,15 @@ from typing import List, Dict  # noqa: F401
 from openapi_server.models.base_model_ import Model
 from openapi_server import util
 
-
+from openapi_server.models.FileOperations import FileOperations
 import sys
-
-from ruamel.yaml import YAML 
+from pathlib import Path, PurePath
+from opera.error import DataError, ParseError
+from opera.parser import tosca
+from opera.storage import Storage
+from ruamel.yaml import YAML
+import shutil
+import zipfile 
 
 
 class DataPipeline(Model):
@@ -31,60 +36,84 @@ class DataPipeline(Model):
     # gets the list of nodes that has "radon.nodes.nifi.nifipipeline" "type" in it
     @classmethod
 
-    def get_pipeline_nodes(self, node_types):
-        for nodeName in self.cntnt["topology_template"]["node_templates"].keys():
-            node = self.cntnt["topology_template"]["node_templates"][nodeName]
-            if "type" in node.keys():
-                if node["type"] in node_types:
-                    self.pipeline_nodes.append(nodeName)
+    def get_nodes(self, file_name, temp_Dir):
+        try:
+            entry_file = file_name
+            storage = Storage(Path(temp_Dir))
+            storage.write(entry_file, "root_file")
+            ast = tosca.load(Path(temp_Dir), PurePath(entry_file))
+            template = ast.get_template({})
+            topology = template.instantiate(storage)
+
+            nodes = topology.nodes
+            node_keys = list(nodes.keys())
+            node_values = list(nodes.values())
+            node_list = []
+            for val in range(len(node_values)):
+                if len(node_values[val].template.requirements) > 0:
+                    temp_node = node_keys[val].split('_')
+                    node_list.append(temp_node[0])
+            return node_list
+
+        except ParseError as e:
+            print("{}: {}".format(e.loc, e))
+            return 1
+        except DataError as e:
+            print(str(e))
+            return 1
 
 
 
     # gets the list of host and connectToPipeline details
     @classmethod
 
-    def get_host_connection_nodes(self):
+    def get_host_connection_nodes(self,content, node_list):
         host_flag = 0
-        for pipeline_node in self.pipeline_nodes:
-            node = self.cntnt["topology_template"]["node_templates"][pipeline_node]["requirements"]
+        for node_val in node_list:
+            node = content["topology_template"]["node_templates"][node_val]["requirements"]
             for n in range(len(node)):
                 for key, val in node[n].items():
                     if key == "host" and host_flag == 0:
-                        self.host_names.append(val)
-                        host_flag = 1
-                    elif "connect" in key:
-                        self.connection_names.append(val)
-                        host_flag = 0
+                        for key_0, val_0 in val.items():
+                            if key_0 == 'node':
+                                self.host_names.append(val_0)
+                                host_flag = 1
+                    elif "connect" in key.lower():
+                        for key_0, val_0 in val.items():
+                            if key_0 == 'node':
+                                self.connection_names.append(val_0)
+                                host_flag = 0
                     elif key == "host" and host_flag == 1:
-                        self.connection_names.append('no')
-                        self.host_names.append(val)
-                        host_flag = 0
+                        for key_0, val_0 in val.items():
+                            if key_0 == 'node':
+                                self.connection_names.append('no')
+                                self.host_names.append(val_0)
+                                host_flag = 0
 
 
     # check the nodes and make a list of nodes where changes have to be done
     @classmethod
-    def get_nodelist_to_edit(self):
+    def get_nodelist_to_edit(self,node_list):
         for connect in range(len(self.connection_names)):
-            # print(pipeline_nodes[connect])
-            if (self.connection_names[connect] != 'no'):
+            if self.connection_names[connect] != 'no':
                 connection = self.connection_names[connect]
-                pipeline = self.pipeline_nodes.index(connection)
+                pipeline = node_list.index(connection)
                 connection_host = self.host_names[pipeline]
                 node_host = self.host_names[connect]
-                if (connection_host != node_host):
-                    self.nodes_to_change.append(self.pipeline_nodes[connect])
+                if connection_host != node_host:
+                    self.nodes_to_change.append(node_list[connect])
 
 
     # defines the function to make changes in the file at required nodes
     @classmethod
-    def make_changes(self):
+    def make_changes(self,content):
         for nodes_change in self.nodes_to_change:
-            node = self.cntnt["topology_template"]["node_templates"][nodes_change]
+            node = content["topology_template"]["node_templates"][nodes_change]
             if "requirements" in node.keys():
                 for req in node["requirements"]:
-                    if "connectToPipeline" in req:
-                        req["connectToRemotePipeline"] = req["connectToPipeline"]
-                        del req["connectToPipeline"]
+                    if "ConnectToPipeline" in req:
+                        req["ConnectToRemotePipeline"] = req["ConnectToPipeline"]
+                        del req["ConnectToPipeline"]
 
 
 
@@ -141,35 +170,27 @@ class DataPipeline(Model):
         """
 
         self._file = file
-
+     
 
     @classmethod
     def convert(self, filepath):
 
-            node_types={
-              "radon.nodes.nifi.nifipipeline",
-              "radon.nodes.aws.s3bucket",
-              "radon.nodes.aws.lambda"}
             self.pipeline_nodes = []
             self.host_names = []
             self.connection_names = []
             self.nodes_to_change = []
+            temp_Dir = './temp_Dir'
+            if 'yaml' in filepth:
+            file_operations = FileOperations()
+            file_operations.unzip_csar(filepath, temp_Dir)
+            entry_file_name = file_operations.read_tosca_meta_file(temp_Dir)
+            node_list = self.get_nodes(entry_file_name, temp_Dir)
 
-
-            #print("file", self.file, self._file)
-            mydoc = open(filepath, "r")
-            yaml = YAML(typ='safe')
-            yaml.default_flow_style = False
-            self.cntnt = yaml.load(mydoc)
-            self.get_pipeline_nodes(node_types)
-            self.get_host_connection_nodes()
-            self.get_nodelist_to_edit()
-            self.make_changes()
-
-            #self.dump_yaml_file(self.cntnt, filepath)
-            yaml_file = open(filepath, "w")
-            yaml.dump(self.cntnt, yaml_file)
-            yaml_file.close()
-
-            mydoc.close()
+            yaml, content = file_operations.read_file(Path(temp_Dir, entry_file_name))
+            self.get_host_connection_nodes(content, node_list)
+            self.get_nodelist_to_edit(node_list)
+            self.make_changes(content)
+            file_operations.write_file(yaml, content, (Path(temp_Dir, entry_file_name)))
+            modified_dir=file_operations.zip_csar(filepath, temp_Dir)
+            return modified_dir
 
