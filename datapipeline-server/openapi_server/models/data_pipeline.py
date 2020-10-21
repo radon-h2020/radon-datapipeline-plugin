@@ -180,17 +180,18 @@ class DataPipeline(Model):
             self.connection_names = []
             self.nodes_to_change = []
             temp_Dir = './temp_Dir'
-            if 'yaml' in filepth:
-            file_operations = FileOperations()
-            file_operations.unzip_csar(filepath, temp_Dir)
-            entry_file_name = file_operations.read_tosca_meta_file(temp_Dir)
-            node_list = self.get_nodes(entry_file_name, temp_Dir)
+            if 'yaml' in filepath:
+              file_operations = FileOperations()
+              file_operations.unzip_csar(filepath, temp_Dir)
+              entry_file_name = file_operations.read_tosca_meta_file(temp_Dir)
+              node_list = self.get_nodes(entry_file_name, temp_Dir)
 
-            yaml, content = file_operations.read_file(Path(temp_Dir, entry_file_name))
-            self.get_host_connection_nodes(content, node_list)
-            self.get_nodelist_to_edit(node_list)
-            self.make_changes(content)
-            file_operations.write_file(yaml, content, (Path(temp_Dir, entry_file_name)))
-            modified_dir=file_operations.zip_csar(filepath, temp_Dir)
-            return modified_dir
+              yaml, content = file_operations.read_file(Path(temp_Dir, entry_file_name))
+
+              self.get_host_connection_nodes(content, node_list)
+              self.get_nodelist_to_edit(node_list)
+              self.make_changes(content)
+              file_operations.write_file(yaml, content, (Path(temp_Dir, entry_file_name)))
+              modified_dir=file_operations.zip_csar(filepath, temp_Dir)
+              return modified_dir
 
