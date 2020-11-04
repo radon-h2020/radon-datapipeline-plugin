@@ -35,11 +35,11 @@ What is inside data pipeline plugin?
 *************************************
 
 1. This plugin unzip the CSAR file, get the .tosca file (the service blueprint).
-2. Parse the the YAML file and understand the node topolology.
-3. Make any changes/modification to the YAML file itself, if needed.
+2. Parse the the .tosca file and understand the node topolology.
+3. Make any changes/modification to the .tosca file itself, if needed.
 4. Updates the templates, if needed.
 5. Zip again all and create the CSAR file.
-6. Pass the ZIP file to the RADON Orchestrator.
+6. Pass the CSAR file to the RADON Orchestrator (optional).
 
 
 This is the initial version of the Data pipeline plugin. In the proceeding version, the plugin will be improved and will come with lots of features.
