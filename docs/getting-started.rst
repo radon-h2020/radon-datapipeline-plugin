@@ -38,23 +38,27 @@ How to use the plugin CLI?
 - Keep your TOSCA service ready and note the path. 
 - Keep the CSAR file ready for input. 
 - Install the opera in virtual environment
-```
-$ mkdir ~/opera && cd ~/opera
-$ python3 -m venv .venv && . .venv/bin/activate
-(.venv) $ pip install opera
-```
+:: 
+
+  $ mkdir ~/opera && cd ~/opera
+  $ python3 -m venv .venv && . .venv/bin/activate
+  (.venv) $ pip install opera
+
+
 [click here](https://pypi.org/project/opera/0.5.8/) for detailed installation procedure of Opera.
 It is recommended to install opera v0.5.8.
 
 - install ruamel.yaml
-```
-(.venv) $ pip install ruamel.yaml
-```
+:: 
+
+  (.venv) $ pip install ruamel.yaml
+
 - Change current directory to `/src`.
 - Execute the following command with the CSAR file 
-```
-(.venv) $ python3 DPP.py <.csar file>
-```
+:: 
+
+  (.venv) $ python3 DPP.py <.csar file>
+
 
 - A sample `input <https://github.com/radon-h2020/radon-datapipeline-plugin/blob/master/original-sample.yml>`_  and `output <https://github.com/radon-h2020/radon-datapipeline-plugin/blob/master/output-sample.yml>`_ YAML file can be found `here <https://github.com/radon-h2020/radon-datapipeline-plugin>`_.
 
@@ -70,10 +74,11 @@ The plugin also contains a REST-based interface, using which users can execute t
 
 2. Download the github project repository
 
-```bash
-git clone https://github.com/radon-h2020/radon-datapipeline-plugin
-cd radon-datapipeline-plugin
-```
+:: 
+
+  git clone https://github.com/radon-h2020/radon-datapipeline-plugin
+  cd radon-datapipeline-plugin
+
 
 3. User Docker  to build and deploy the data pipeline plugin webservice
 
@@ -88,6 +93,7 @@ cd radon-datapipeline-plugin
   docker run -p 8080:8080 adon_dpp_server
 
 4. Direct your browser to here to access the RadonDataPipeline API ui with REST request example templates:
-```
-http://localhost:8080/RadonDataPipeline/ui/
-```
+:: 
+
+  http://localhost:8080/RadonDataPipeline/ui/
+
