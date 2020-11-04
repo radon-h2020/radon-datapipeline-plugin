@@ -34,7 +34,7 @@ The pipeline plugin will be responsible for:
 What is inside data pipeline plugin?
 *************************************
 
-1. This plugin unzip the CSAR file, get the YAML file (the service blueprint).
+1. This plugin unzip the CSAR file, get the .tosca file (the service blueprint).
 2. Parse the the YAML file and understand the node topolology.
 3. Make any changes/modification to the YAML file itself, if needed.
 4. Updates the templates, if needed.
