@@ -8,7 +8,7 @@ We see *PipelineBlock* as a basic building block of a TOSCA based data intensive
 
 A *PipelineBlock* can be designed for different pipeline tasks, such as extracting data from a remote database, or from a AWS S3bucket, processing the data by invoking serverless function etc. In RADON data pipeline, the TOSCA pipelines nodes structured in a manner presented in following figure. 
 
-.. image:: images/PipelineBlock-v1.png
+.. image:: images/CompleteFig_TOSCA_DP_model.png
 
 
 Where is data pipeline plugin in RADON-Architecture?
@@ -24,10 +24,11 @@ Plugin's responsibilty?
 **************************
 
 The pipeline plugin will be responsible for:
-* Parsing and reversing the pipeine CSAR
-* Attaching the necessary relationship templates in case of multi cloud pipeline deployment.
-* Updating the node templates based on the targeted cloud environment.
-* Ensuring the data encryption in multi-cloud service deployment
+
+*  Parsing and reversing the pipeine CSAR
+*  Attaching the necessary relationship templates in case of multi cloud pipeline deployment.
+*  Updating the node templates based on the targeted cloud environment.
+*  Ensuring the data encryption in multi-cloud service deployment
 
 
 What is inside data pipeline plugin?
