@@ -6,10 +6,11 @@ We see *PipelineBlock* as a basic building block of a TOSCA based data intensive
 
 .. image:: images/BasicDPConcept.png
 
-A *PipelineBlock* can be designed for different pipeline tasks, such as extracting data from a remote database, or from a AWS S3bucket, processing the data by invoking serverless function etc. In RADON data pipeline, the TOSCA pipelines nodes structured in a manner presented in following figure. 
+A *PipelineBlock* can be designed for different pipeline tasks, such as extracting data from a remote database, or from a AWS S3bucket, processing the data by invoking serverless function etc. In RADON data pipeline, the TOSCA data pipelines nodes structured in a manner presented in following figure. 
 
 .. image:: images/CompleteFig_TOSCA_DP_model.png
 
+The detail description on how to desing a data pipeline based TOSCA service template can be found `User Guide <https://datapipeline-plugin.readthedocs.io/en/latest/#user-s-guide>`_ section. 
 
 Where is data pipeline plugin in RADON-Architecture?
 *****************************************************
