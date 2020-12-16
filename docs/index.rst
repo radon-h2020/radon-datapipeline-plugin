@@ -25,6 +25,10 @@ Getting Started
 
 .. include:: getting-started.rst
 
+User's Guide
+---------------
+
+.. include:: User-guide.rst
 
 Additional Information
 ----------------------
