@@ -31,7 +31,9 @@ Steps:
     `PubGCS` TOSCA node from `radon.nodes.datapipeline.destination`
 7. Host `Nifi` on `OpenStack`.
 8. Similarly, host `ConsS3Bucket` and `PubGCS` on `Nifi`
-9. Connect `ConsS3Bucket` to `PubGCS`. Now the service template should look like below.
+9. Connect `ConsS3Bucket` to `PubGCS`. 
+10. Save the service template and close the window.
+11. Now, in the `Winery Repository` window, export the service template to IDE and close the window.
 
 
 
