@@ -10,6 +10,12 @@ Welcome to DataPipeline plugin's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   business-purpose.rst
+   technical-details.rst
+   getting-started.rst
+   User-guide.rst
+   additional-information.rst
+
 Business Purpose
 ----------------
 
