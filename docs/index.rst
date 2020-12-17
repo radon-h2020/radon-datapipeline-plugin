@@ -7,6 +7,7 @@ Welcome to DataPipeline plugin's documentation!
 ===============================================
 
 .. toctree::
+   :widths: 50
    :maxdepth: 2
    :caption: Contents:
 
