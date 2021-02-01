@@ -3,7 +3,7 @@ import string
 
 
 
-class DataEncryption():
+class DataEncryption:
 
     def generate_password(self, length=10):
         # below code generates the password
