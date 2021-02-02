@@ -18,7 +18,7 @@ This is the initial version of the Data pipeline plugin. In the proceeding versi
 
 ## How to use the plugin as a stand alone tool?
 - Download the plugin github repository using git or as a zip file. 
-- Make sure that Python3 environment is working on your machine.
+- Make sure that Python3 environment is working on your machine. The current verison is tested with [Python 3.7.6](https://www.python.org/downloads/release/python-376/ "Download Python 3.7.6")
 - Keep your TOSCA service ready and note the path. 
 - Keep the CSAR file ready for input. 
 - Install the opera in virtual environment
