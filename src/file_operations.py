@@ -55,18 +55,22 @@ class FileOperations():
         yaml.dump(file_content, yaml_file)
         yaml_file.close()
 
+
+
     def zip_csar(self, dir_name, temp_Dir):
         try:
             count = 0
-            dir_name_without_extension=dir_name.split('.')
+            dir_name_without_extension = dir_name.split('.')
             modified_dir = './' + dir_name_without_extension[0] + '_modified'
             fileType = '.csar'
-            while Path(modified_dir+fileType).exists():
+            while Path(modified_dir + fileType).exists():
                 count += 1
                 modified_dir += '(' + str(count) + ')'
             os.remove(Path(temp_Dir, 'root_file'))
-            file_name=modified_dir+fileType
-            shutil.copytree(temp_Dir, file_name)
+            file_name = modified_dir + fileType
+            #shutil.copytree(temp_Dir,file_name)
+            shutil.make_archive(modified_dir, 'zip',temp_Dir )
+            os.rename(modified_dir+'.zip',file_name)
             shutil.rmtree(temp_Dir)
             return file_name
         except FileExistsError as File_Exists:

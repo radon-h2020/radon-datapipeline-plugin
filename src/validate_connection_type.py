@@ -80,7 +80,6 @@ class ValidateConnectionType:
     def delete_duplicate_connection_node(self,content):
         self.duplicate_connection_index(content)
         duplicate_node_relationships=[]
-        print(self.duplicate_node_details)
         for val in self.duplicate_node_details:
             get_index=val.split('#')
             node=content["topology_template"]["node_templates"][get_index[0]]["requirements"][int(get_index[3])]
@@ -115,11 +114,8 @@ class ValidateConnectionType:
     def make_changes_local_nodes(self, content):
         for nodes_change in self.local_nodes_to_change:
             split_node_details = nodes_change.split('#')
-            print('inside local',nodes_change)
             node = content["topology_template"]["node_templates"][split_node_details[0]]
-
             for req in node["requirements"]:
-
                 for val in req.values():
                     if split_node_details[1] in val.values() and "ConnectToPipelineRemote" in req:
                         req["ConnectToPipeline"] = req["ConnectToPipelineRemote"]
