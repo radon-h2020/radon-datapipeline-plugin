@@ -18,7 +18,7 @@ class ValidateRelationships:
             node_requirement = content["topology_template"]["node_templates"][main_node[0]]["requirements"]
             for n in range(len(node_requirement)):
                 self.get_relationship_indexs(content)
-                index_num = max(self.remote_key_index) + 1 if self.remote_key_index else 0
+                index_num = int(max(self.remote_key_index)) + 1 if self.remote_key_index else 0
                 for key, val in node_requirement[n].items():
                     if 'connecttopipelineremote' in key.lower():
                         for key_0, val_0 in val.items():
