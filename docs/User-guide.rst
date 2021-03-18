@@ -41,10 +41,10 @@ How to use Data pipeline plugin from RADON IDE
 ----------
 The data pipeline plugin can be used to ensure the consistency in the data pipeline-based TOSCA service template. The plugin takes the CSAR as the input and returns the modified CSAR which can be used further with other RADON tools, such as orchestrator, VT, etc. The plugin checks mainly two types of potential user-made errors. Firstly, the errors related to the connection between two data pipeline nodes. Here, the plugin checks if two pipeline nodes are connected with the correct relationship type. This also checks if multiple connections exist between any pair of pipeline nodes. Secondly, the plugin also updates the CSAR with correct configuration if it found any improper encryption configuration.
 
-Figure IDE_DPP.1. Option to invoke data pipeline plugin
+Figure IDE_DPP.1. Option to invoke data pipeline plugin     
 .. image:: images/invoke_DPP.png
 
 To invoke the data pipeline plugin with exported CSAR (in this case DataPipelineExample.csar), right click on the csar and select “Convert CSAR with Data pipeline plugin” option, as shown in  Figure IDE_DPP.1. The converted csar will be exported to the same folder structure, in this case the output is DataPipelineExample_converted.csar, as shown in Figure IDE_DPP.2.
 
-Figure IDE_DPP.2. Data pipeline plugin output
+Figure IDE_DPP.2. Data pipeline plugin output      
 .. image:: images/DPP_output.png
