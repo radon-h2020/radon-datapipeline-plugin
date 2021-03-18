@@ -46,7 +46,7 @@ The data pipeline plugin can be used to ensure the consistency in the data pipel
    Figure IDE_DPP.1: Option to invoke data pipeline plugin    
 
 
-To invoke the data pipeline plugin with exported CSAR (in this case DataPipelineExample.csar), right click on the csar and select “Convert CSAR with Data pipeline plugin” option, as shown in  Figure IDE_DPP.1. The converted csar will be exported to the same folder structure, in this case the output is DataPipelineExample_converted.csar, as shown in Figure IDE_DPP.2.
+To invoke the data pipeline plugin with exported CSAR (in this case `DataPipelineExample.csar`), right click on the csar and select “Convert CSAR with Data pipeline plugin” option, as shown in  Figure IDE_DPP.1. The converted csar will be exported to the same folder structure, in this case the output is `DataPipelineExample_converted.csar`, as shown in Figure IDE_DPP.2.
 
 
 .. figure:: images/DPP_output.png
