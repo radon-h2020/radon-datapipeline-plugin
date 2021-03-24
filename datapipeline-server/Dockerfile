@@ -5,10 +5,12 @@ WORKDIR /usr/src/app
 
 COPY requirements.txt /usr/src/app/
 
-RUN apk --update add python3 py3-pip openssl ca-certificates py-openssl wget git
-RUN apk --update add  libffi-dev openssl-dev python3-dev  build-base \
-  && pip install --upgrade pip \
-  && pip install -r requirements.txt 
+RUN apk --update add python3 py3-pip openssl ca-certificates py3-openssl wget git 
+RUN apk --update add --virtual build-dependencies libffi-dev openssl-dev python3-dev build-base
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+RUN apk del build-dependencies
+
 
 COPY . /usr/src/app
 
