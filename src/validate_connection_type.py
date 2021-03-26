@@ -9,6 +9,11 @@ class ValidateConnectionType:
     duplicate_node_details = []
 
     def get_host_connection_nodes(self, content, node_list):
+        self.host_names.clear()
+        self.connection_names.clear()
+        self.connection_relation.clear()
+        self.node_relationship.clear()
+        self.node_capability.clear()
         host_flag = 0
         try:
             for node_val in node_list:
@@ -44,6 +49,8 @@ class ValidateConnectionType:
             print('Key not found', ke.__str__())
 
     def get_nodelist_to_edit(self, node_list):
+        self.remote_nodes_to_change.clear()
+        self.local_nodes_to_change.clear()
         for connect in self.connection_relation:
             relation = connect.split('#')
             source_node_index = node_list.index(relation[0])
@@ -57,6 +64,7 @@ class ValidateConnectionType:
 
 
     def duplicate_connection_index(self,content):
+        self.duplicate_node_details.clear()
         for nodes in self.remote_nodes_to_change:
             split_node_details = nodes.split('#')
             node = content["topology_template"]["node_templates"][split_node_details[0]]
