@@ -48,7 +48,7 @@ def submit_datapipeline(data_pipeline=None):  # noqa: E501
 
     service = DataPipeline(file = filepath)
 
-    service.convert(filepath)
+    filepath = service.convert(filepath)
 
 
     with open(filepath, 'rb') as f:
